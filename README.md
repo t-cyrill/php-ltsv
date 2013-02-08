@@ -1,8 +1,13 @@
 # php-ltsv
 Labelled Tab-Separated Values(LTSV) parser / dumper
 
-## Usage
+## Installation
+```bash
+git clone git://github.com/t-cyrill/php-ltsv.git
 ```
+
+## Usage
+```php
 <?php
 require 'autoload.php';
 
