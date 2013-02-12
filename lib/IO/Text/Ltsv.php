@@ -1,13 +1,24 @@
 <?php
 namespace IO\Text;
 
+/**
+ * Labeled Tab-separated Values Parser / Dumper
+ *
+ * @see http://ltsv.org/
+ */
 class Ltsv
 {
-    public static function encode(array $array)
+    /**
+     * Convert array to LTSV
+     *
+     * @param array $hash hash
+     * @return string LTSV string
+     */
+    public static function encode(array $hash)
     {
         $result = array();
 
-        foreach ($array as $k => $v) {
+        foreach ($hash as $k => $v) {
             if (is_array($v) || is_resource($v) || is_object($v) || $k === '' || strpos($k, ':') !== false) {
                 throw new \InvalidArgumentException();
             }
@@ -16,6 +27,12 @@ class Ltsv
         return implode("\t", $result);
     }
 
+    /**
+     * Convert LTSV to array
+     *
+     * @param string $ltsv LTSV string
+     * @return array hash
+     */
     public static function decode($ltsv)
     {
         $hash = array();
